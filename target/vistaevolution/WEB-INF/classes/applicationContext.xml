@@ -1,0 +1,29 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:component-scan base-package="gov.va.oit.vistaevolution" />
+	<context:property-placeholder location="classpath:vistaLinkContext${vistalink.strategy:}.properties" />
+
+	<bean id="j2eeVistaLinkStrategy" class="gov.va.oit.vistaevolution.util.vistalink.J2EEVistaLinkStrategy">
+		<constructor-arg name="connSpecType" value="${connSpecType}" />
+		<constructor-arg name="userId" value="${userId}" />
+		<constructor-arg name="division" value="${division}" />
+	</bean> 
+ 
+	<bean id="j2seVistaLinkStrategy" class="gov.va.oit.vistaevolution.util.vistalink.J2SEVistaLinkStrategy">
+		<constructor-arg name="cfgName" value="${cfgName}" />
+		<constructor-arg name="accessCode" value="${accessCode}" />
+		<constructor-arg name="verifyCode" value="${verifyCode}" />
+		<constructor-arg name="division" value="${division}" />
+	</bean> 
+
+	<bean id="vistaLinkContext"
+		class="gov.va.oit.vistaevolution.util.vistalink.DefaultVistaLinkContext">
+		<constructor-arg name="vistaLinkStrategy" ref="${vistaLinkStrategy}" />
+	</bean>
+
+</beans>

@@ -1,0 +1,33 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:component-scan base-package="gov.va.oit.vistaevolution.util" />
+ 	<context:property-placeholder location="file:src/test/resources/vistaLinkContext.properties"/>
+
+	<bean id="vistaLinkStrategy"
+		class="gov.va.oit.vistaevolution.util.vistalink.J2SEVistaLinkStrategy">
+		<constructor-arg name="division" value="${division}" />
+		<constructor-arg name="accessCode" value="${accessCode}" />
+		<constructor-arg name="verifyCode" value="${verifyCode}" />
+		<constructor-arg name="cfgName" value="${cfgName}" />
+	</bean>
+
+
+	<!-- <bean id="vistaLinkStrategy" class="gov.va.oit.vistaevolution.util.vistalink.J2EEVistaLinkStrategy"> -->
+	<!-- <constructor-arg name="rpcContext" value="ZZ EVO" /> -->
+	<!-- <constructor-arg name="connSpecType" value="proxy" /> -->
+	<!-- <constructor-arg name="endUserId" value="RPC#1234" /> -->
+	<!-- <constructor-arg name="division" value="11000" /> -->
+	<!-- </bean> -->
+
+	<bean id="vistaLinkContext"
+		class="gov.va.oit.vistaevolution.util.vistalink.DefaultVistaLinkContext">
+		<constructor-arg name="vistaLinkStrategy" ref="vistaLinkStrategy" />
+	</bean>
+
+
+</beans>

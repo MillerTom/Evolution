@@ -1,0 +1,50 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:component-scan base-package="gov.va.oit.vistaevolution.mailman.ws.xmgapi0" />
+	<import resource="file:src/test/resources/commonApplicationContext.xml" />
+
+	<!--  Start First Test Case -->
+	<bean id="request1"
+		class="gov.va.oit.vistaevolution.mailman.ws.xmgapi0.model.XMGAPI0SubgetRequest">
+		<constructor-arg name="XMZ" value="58880" />
+	</bean>
+
+	<bean id="response1"
+		class="gov.va.oit.vistaevolution.mailman.ws.xmgapi0.model.XMGAPI0SubGetResponse">
+		<constructor-arg name="subject" value="LEX*2.0*69 Installation"/>
+	</bean>
+	<!-- End First Test Case -->
+	
+	
+	<!--  Start Second Test Case -->
+	<bean id="request2"
+		class="gov.va.oit.vistaevolution.mailman.ws.xmgapi0.model.XMGAPI0SubgetRequest">
+		<constructor-arg name="XMZ" value="9" />
+	</bean>
+
+	<bean id="response2"
+		class="gov.va.oit.vistaevolution.ws.faults.VistaWebServiceFault">
+		<constructor-arg name="message" value="Message not found"/>
+	</bean>
+	<!-- End Second Test Case -->
+	
+	
+	<!--  Start Third Test Case -->
+	<bean id="request3"
+		class="gov.va.oit.vistaevolution.mailman.ws.xmgapi0.model.XMGAPI0SubgetRequest">
+		<constructor-arg name="XMZ" value="A" />
+	</bean>
+
+	<bean id="response3"
+		class="gov.va.oit.vistaevolution.ws.faults.VistaWebServiceFault">
+		<constructor-arg name="message" value="Error in required input"/>
+	</bean>
+	<!-- End Third Test Case -->
+
+
+</beans>

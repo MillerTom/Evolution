@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: gov.va.oit.vistaevolution.mailman.ws.xma03.endpoints.unit.XMA03RenTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.004 sec
